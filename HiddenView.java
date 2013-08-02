@@ -5,5 +5,5 @@ package HiddenText;
  * Date: 02.08.13
  */
 public interface HiddenView {
-    public StringBuilder hide(StringBuilder string);
+    public StringBuilder hide(StringBuilder string, int quantityOfFirstChars, int quantityOfLastChars);
 }

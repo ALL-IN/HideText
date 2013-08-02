@@ -22,7 +22,8 @@ public class HiddenText {
         }
         if (properties.getProperty("hiddenText").equals("true")) {
             hiddenView = new Hide3First2Last();
-            System.out.println(hiddenView.hide(new StringBuilder(text)));
+            System.out.println(hiddenView.hide(new StringBuilder(text), Integer.parseInt(properties.getProperty("quantityOfFirstChars")),
+                    Integer.parseInt(properties.getProperty("quantityOfLastChars"))));
         } else if (properties.getProperty("hiddenText").equals("false")) {
             System.out.println(text);
         }
