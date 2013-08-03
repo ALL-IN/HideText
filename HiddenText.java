@@ -10,24 +10,18 @@ import java.util.Scanner;
  * Date: 02.08.13
  */
 public class HiddenText {
-    static HiddenView hiddenView;
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        String text = scanner.next();
-        Properties properties = new Properties();
-        try {
-            properties.load(new FileInputStream("hiddenText.properties"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        if (properties.getProperty("hiddenText").equals("true")) {
-            hiddenView = new Hide3First2Last();
-            System.out.println(hiddenView.hide(new StringBuilder(text), Integer.parseInt(properties.getProperty("quantityOfFirstChars")),
-                    Integer.parseInt(properties.getProperty("quantityOfLastChars"))));
-        } else if (properties.getProperty("hiddenText").equals("false")) {
-            System.out.println(text);
+        boolean b = true;
+        while (b)  {
+            System.out.println("Enter anything");
+            String text = scanner.next();
+            HiddenView hiddenView = new Hide3First2Last();
+            System.out.println(hiddenView.hide(new StringBuilder(text)));
+            if (text.equals("enough")) {
+                b = false;
+            }
         }
     }
-
-
 }
