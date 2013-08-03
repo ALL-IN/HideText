@@ -16,9 +16,9 @@ public abstract class HiddenView {
 
     public HiddenView() {
         properties = loadProperties();
-        if (!properties.getProperty("hiddenText").equals("true") && properties.getProperty("hiddenText").equals("false")
+        if (!(properties.getProperty("hiddenText").equals("true") && properties.getProperty("hiddenText").equals("false")
                 && isInteger(properties.getProperty("quantityOfFirstChars"))
-                && isInteger(properties.getProperty("quantityOfLastChars"))) {
+                && isInteger(properties.getProperty("quantityOfLastChars")))) {
             System.out.println("Properties file isn't valid");
             properties = loadProperties();
         }
