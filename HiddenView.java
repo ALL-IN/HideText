@@ -16,12 +16,18 @@ public abstract class HiddenView {
 
     public HiddenView() {
         properties = loadProperties();
-        if (!(properties.getProperty("hiddenText").equals("true") && properties.getProperty("hiddenText").equals("false")
-                && isInteger(properties.getProperty("quantityOfFirstChars"))
-                && isInteger(properties.getProperty("quantityOfLastChars")))) {
+        if (isNotValidData()) {
             System.out.println("Properties file isn't valid");
-            properties = loadProperties();
+            System.exit(0);
         }
+    }
+
+    private boolean isNotValidData() {
+        return !(properties.getProperty("hiddenText").equals("true") && properties.getProperty("hiddenText").equals("false")
+                && isInteger(properties.getProperty("quantityOfFirstChars"))
+                && isInteger(properties.getProperty("quantityOfLastChars"))
+                && Integer.parseInt(properties.getProperty("quantityOfFirstChars")) > 0
+                && Integer.parseInt(properties.getProperty("quantityOfFirstChars")) > 0);
     }
 
     private Properties loadProperties() {
@@ -33,6 +39,7 @@ public abstract class HiddenView {
             properties.load(new FileInputStream(fileLocation));
         } catch (IOException e) {
             System.out.println("Properties didnt load");
+            System.exit(0);
         }
         return properties;
     }
